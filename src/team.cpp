@@ -33,6 +33,8 @@ team_t::team_t (const project &proj, const std::vector<int> &members, type_of_re
         }
       m_time -= 1.5;
       break;
+    case type_of_relay::COUNT:
+      break;
     }
  }
 

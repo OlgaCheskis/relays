@@ -18,6 +18,7 @@ main_window::main_window()
   setCentralWidget (central_widget);
 
   create_menu_bar ();
+  showMaximized ();
 }
 
 

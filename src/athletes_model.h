@@ -34,10 +34,50 @@ public:
   QVariant data (const QModelIndex &index, int role = Qt::DisplayRole) const;
   bool setData (const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
   Qt::ItemFlags flags(const QModelIndex &index) const;
+  void delete_row (const QModelIndex &index);
 
 private:
   project &m_project;
   const int m_column_count = 7;
+};
+
+#include <QStyledItemDelegate>
+
+class  combo_box_delegate: public QStyledItemDelegate
+{
+    Q_OBJECT
+
+public:
+    combo_box_delegate (QObject *parent = nullptr);
+
+    QWidget *createEditor (QWidget *parent, const QStyleOptionViewItem &option,
+                          const QModelIndex &index) const override;
+
+    void setEditorData (QWidget *editor, const QModelIndex &index) const override;
+    void setModelData (QWidget *editor, QAbstractItemModel *model,
+                      const QModelIndex &index) const override;
+
+    void updateEditorGeometry (QWidget *editor, const QStyleOptionViewItem &option,
+                              const QModelIndex &index) const override;
+
+};
+
+class  spin_box_delegate: public QStyledItemDelegate
+{
+    Q_OBJECT
+
+public:
+    spin_box_delegate (QObject *parent = nullptr);
+
+    QWidget *createEditor (QWidget *parent, const QStyleOptionViewItem &option,
+                          const QModelIndex &index) const override;
+
+    void setEditorData (QWidget *editor, const QModelIndex &index) const override;
+    void setModelData (QWidget *editor, QAbstractItemModel *model,
+                      const QModelIndex &index) const override;
+
+    void updateEditorGeometry (QWidget *editor, const QStyleOptionViewItem &option,
+                              const QModelIndex &index) const override;
 };
 
 #endif // ATHLETES_MODEL_H

@@ -22,9 +22,10 @@ struct athlete_t
              double breast,
              double fly,
              double free);
+  athlete_t () {};
 
   std::string m_name;
-  int m_age = 30;
+  int m_age = 0;
   gender_t m_gender;
   double m_back = novalid_time;
   double m_breast = novalid_time;
